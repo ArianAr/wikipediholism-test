@@ -1,8 +1,8 @@
 /* jshint moz: true */
 $( document ).ready( function () {
-    const API_ROOT = "https://en.wikipedia.org/w/api.php",
+    const API_ROOT = "https://fa.wikipedia.org/w/api.php",
           API_SUFFIX = "&format=json&callback=?&continue=",
-          TEST_PAGE = "Wikipedia:Wikipediholism test";
+          TEST_PAGE = "ویکی‌پدیا:سنجش اعتیاد به ویکی‌پدیا";
 
     var score = 0;
     var revision = "0";
@@ -77,17 +77,17 @@ $( document ).ready( function () {
         } else {
             score -= questionScore;
         }
-        $( ".score" ).text( "Current score: " + score );
+        $( ".score" ).text( "امتیاز فعلی: " + score );
 
         for ( cutoffScore in scoreTable ) {
             if ( score < cutoffScore ) {
-                $( "#after p#diagnosis" ).html( "<b><a href='https://en.wikipedia.org/wiki/Wikipedia:Wikipediholism_test#Interpreting_your_score'>Diagnosis</a></b>: " + scoreTable[ cutoffScore ] );
+                $( "#after p#diagnosis" ).html( "<b><a href='https://fa.wikipedia.org/wiki/%D9%88%DB%8C%DA%A9%DB%8C%E2%80%8C%D9%BE%D8%AF%DB%8C%D8%A7:%D8%B3%D9%86%D8%AC%D8%B4_%D8%A7%D8%B9%D8%AA%DB%8C%D8%A7%D8%AF_%D8%A8%D9%87_%D9%88%DB%8C%DA%A9%DB%8C%E2%80%8C%D9%BE%D8%AF%DB%8C%D8%A7#.D8.A8.D8.B1.D8.B1.D8.B3.DB.8C_.D8.A7.D9.85.D8.AA.DB.8C.D8.A7.D8.B2_.D8.B4.D9.85.D8.A7'>بررسی امتیاز شما</a></b>: " + scoreTable[ cutoffScore ] );
                 break;
             }
         }
 
-        $( "#after p#description" ).html( "Your score was " + score + " point" + ( score == 1 ? "" : "s" ) +
-                                          "! You can display your score on your <a href='https://en.wikipedia.org/wiki/Special:MyPage'>user page</a> with this code for a" +
+        $( "#after p#description" ).html( "امتیاز شما " + score + " است" + ( score == 1 ? "" : "s" ) +
+                                          "! You can display your score on your <a href='https://fa.wikipedia.org/wiki/Special:MyPage'>user page</a> with this code for a" +
                                           " userbox: <tt>{{User Wikipediholic|" + score + "|" + revision + "}}</tt>." );
     };
 } );
