@@ -13,20 +13,20 @@ $( document ).ready( function () {
         if ( data.query.pages[ pageId ].hasOwnProperty( "missing" ) ) {
             $( "#test" ).append( $( "<div>" )
                                  .addClass( "errorbox" )
-                                 .text( "Mysteriously, I couldn't find the test onwiki at " + TEST_PAGE ) );
+                                 .text( "عجیب است, من نتوانستم آزمون را در  " + TEST_PAGE + "پیدا کنم" ) );
             return;
         }
         revision = data.query.pages[ pageId ].revisions[ 0 ].revid;
         var pageText = data.query.pages[ pageId ].revisions[ 0 ][ "*" ]
             .replace( /{{[\s\S]+?}}/g, "" );
-        var questions = pageText.match( /==The test==[\s\S]+==Interpreting your score==/ )[ 0 ]
-            .replace( /==The test==/, "" ).replace( /==Interpreting your score==/, "" )
+        var questions = pageText.match( /==آزمون==[\s\S]+==بررسی امتیاز شما==/ )[ 0 ]
+            .replace( /==آزمون==/, "" ).replace( /==بررسی امتیاز شما==/, "" )
             .match( /\n#.+?\s\(-?\d+.*?\)/g );
-        $( "#loaded" ).text( "I just loaded " + questions.length + " questions. Let's go!" );
+        $( "#loaded" ).text( "من الان " + questions.length + "سوال را بارگیری کردم, بزن بریم!" );
 
         // Initialize the "Interpret your score" table
-        var scoreLines = pageText.match( /==Interpreting your score==[\s\S]+==Bonus questions==/ )[ 0 ]
-            .replace( /==Interpreting your score==/, "" ).replace( /==Bonus questions==/, "" )
+        var scoreLines = pageText.match( /==بررسی امتیاز شما==[\s\S]+==Bonus questions==/ )[ 0 ]
+            .replace( /==بررسی امتیاز شما==/, "" ).replace( /==Bonus questions==/, "" )
             .match( /\| \d+ –|- \d+ \|\| [\S ]+/g );
         scoreLines.forEach( function ( line ) {
             var score = parseInt( line.match( /\d+/g )[1] ) + 1;
