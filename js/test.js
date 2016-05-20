@@ -1,3 +1,5 @@
+// By APerson241
+// Localization by Arian Ar
 /* jshint moz: true */
 $( document ).ready( function () {
     const API_ROOT = "https://fa.wikipedia.org/w/api.php",
