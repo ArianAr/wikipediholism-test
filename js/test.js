@@ -27,8 +27,8 @@ $( document ).ready( function () {
         $( "#loaded" ).text( "من الان " + questions.length + "سوال را بارگیری کردم, بزن بریم!" );
 
         // Initialize the "Interpret your score" table
-        var scoreLines = pageText.match( /==بررسی امتیاز شما==[\s\S]+==Bonus questions==/ )[ 0 ]
-            .replace( /==بررسی امتیاز شما==/, "" ).replace( /==Bonus questions==/, "" )
+        var scoreLines = pageText.match( /==بررسی امتیاز شما==[\s\S]+==سوالات امتیازی==/ )[ 0 ]
+            .replace( /==بررسی امتیاز شما==/, "" ).replace( /==سوالات امتیازی==/, "" )
             .match( /\| \d+ –|- \d+ \|\| [\S ]+/g );
         scoreLines.forEach( function ( line ) {
             var score = parseInt( line.match( /\d+/g )[1] ) + 1;
@@ -38,10 +38,10 @@ $( document ).ready( function () {
 
         // Display the score and refresh button
         $( "#test" )
-            .append( $( "<div>" ).addClass( "score" ).text( "Current score: 0" ) )
+            .append( $( "<div>" ).addClass( "score" ).text( "امتیاز فعلی : ۰" ) )
             .append( $( "<button>" )
                      .addClass( "mw-ui-button mw-ui-destructive mw-ui-quiet" )
-                     .text( "Reset" )
+                     .text( "بازنشانی" )
                      .click( function () {
                          $( ".mw-ui-checkbox" ).prop( "checked", false );
                          score = 0;
@@ -89,7 +89,7 @@ $( document ).ready( function () {
         }
 
         $( "#after p#description" ).html( "امتیاز شما " + score + " است" + ( score == 1 ? "" : "s" ) +
-                                          "! You can display your score on your <a href='https://fa.wikipedia.org/wiki/Special:MyPage'>user page</a> with this code for a" +
+                                          "! شما می‌توانید امتیازتان را در <a href='https://fa.wikipedia.org/wiki/Special:MyPage'>صفحه کاربری‌تان</a> با این کد درون یک جعبه کاربری نمایش دهید" +
                                           " userbox: <tt>{{User Wikipediholic|" + score + "|" + revision + "}}</tt>." );
     };
 } );
